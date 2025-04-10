@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
+    public GameManager manager;
 
     Rigidbody2D rigid;
     Animator anim;
@@ -22,15 +23,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //3
         //Move Value
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        h = manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
+        v = manager.isAction ? 0 : Input.GetAxisRaw("Vertical");
 
         //Check Button Down & Up
-        bool hDown = Input.GetButtonDown("Horizontal"); //수평 다운
-        bool vDown = Input.GetButtonDown("Vertical"); //수직 다운
-        bool hUp = Input.GetButtonUp("Horizontal"); //수직 업
-        bool vUp = Input.GetButtonUp("Vertical"); //수직 다운
+        bool hDown = manager.isAction ? false : Input.GetButtonDown("Horizontal"); //수평 다운
+        bool vDown = manager.isAction ? false : Input.GetButtonDown("Vertical"); //수직 다운
+        bool hUp = manager.isAction ? false : Input.GetButtonUp("Horizontal"); //수직 업
+        bool vUp = manager.isAction ? false : Input.GetButtonUp("Vertical"); //수직 다운
 
         //Check Horizontal Move
         if(h != 0)
@@ -71,9 +73,10 @@ public class PlayerController : MonoBehaviour
             dirVec = Vector3.right; 
 
 
-        //Scan Object
+        //Scan Object & Action
         if(Input.GetButtonDown("Jump") && scanObject != null)
-            Debug.Log("This is:" + scanObject.name);
+            //Debug.Log("This is:" + scanObject.name);
+            manager.Action(scanObject);  //1
     }
 
     void FixedUpdate()
