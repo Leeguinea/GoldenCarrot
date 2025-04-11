@@ -7,10 +7,12 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public TalkManager talkManager;
     public GameObject talkPanel;
     public TextMeshProUGUI TalkText;
     public GameObject scanObject;
     public bool isAction;
+    public int talkIndex;
     
     //2
     public void Action(GameObject scanObj)
@@ -18,16 +20,30 @@ public class GameManager : MonoBehaviour
         if(isAction)    //Exit Action
         {
             isAction = false;
-            talkPanel.SetActive(false);
         }
         else        //Enter Action
         {
             isAction = true;
             scanObject = scanObj;
-            TalkText.text = "이것은 " + scanObject.name + "이다."; 
+            ObjData objData  = scanObject.GetComponent<ObjData>();
+            Talk(objData.id, objData.isNpc);
         }
 
         talkPanel.SetActive(isAction);
         
+    }
+
+    void Talk(int id, bool isNpc)
+    {
+        string talkData = talkManager.GetTalk(id, talkIndex);
+
+        if(isNpc)
+        {
+            TalkText.text = talkData;
+        }
+        else
+        {
+            TalkText.text = talkData;
+        }
     }
 }
