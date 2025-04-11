@@ -15,7 +15,7 @@ public class TalkManager : MonoBehaviour
 
     void GenerateData()
     {
-        talkData.Add(1000, new string[] {"빠빠", "빠빠빠"});      
+        talkData.Add(1000, new string[] {"꼬끼오. 안녕 로니.", "날씨가 정말 좋지?"});      
 
 
         
@@ -24,12 +24,15 @@ public class TalkManager : MonoBehaviour
 
 
         //sign
-        talkData.Add(100, new string[] {"싱싱생초 행복마켓에 오신걸 환영합니다.", "s"});
-        talkData.Add(150, new string[] {"당근밭 채소가게에 오신걸 환영합니다.", "s"});
+        talkData.Add(100, new string[] {"싱싱생초 행복마켓에 오신걸 환영합니다.", "..."});
+        talkData.Add(150, new string[] {"당근밭 채소가게에 오신걸 환영합니다.", "..."});
     }
 
     public string GetTalk(int id, int talkIndex)
     {
-        return talkData[id][talkIndex];
+        if(talkIndex == talkData[id].Length)
+            return null;
+        else
+            return talkData[id][talkIndex];
     }
 }
