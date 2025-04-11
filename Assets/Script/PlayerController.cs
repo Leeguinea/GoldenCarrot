@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
         //Ray
         Debug.DrawRay(rigid.position, dirVec*1.0f, new Color(0,1,0));
-        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("Object"));
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 1.0f, LayerMask.GetMask("Object"));
     
         if(rayHit.collider != null)
             scanObject = rayHit.collider.gameObject;
