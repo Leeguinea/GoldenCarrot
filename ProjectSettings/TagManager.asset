@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Object
   - Boundary
-  - 
+  - Sorting
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: sorting
+    uniqueID: 2536080673
     locked: 0
   m_RenderingLayers:
   - Default
