@@ -5,31 +5,42 @@ using UnityEngine;
 public class TalkManager : MonoBehaviour
 {
     Dictionary<int, string[]> talkData;
+    Dictionary<int, Sprite> portraitData;
 
-    
+    public Sprite[] portraitArr;
+
     void Awake()
     {
         talkData = new Dictionary<int, string[]>();
+        portraitData = new Dictionary<int, Sprite>();
         GenerateData();
     }
 
     void GenerateData()
     {
         //QuizChicken,꼬꼬댁아줌마
-        talkData.Add(1000, new string[] {"꼬끼오. 안녕 로니.", "날씨가 정말 좋지?"});
+        //0:기본, 1:눈 감음, 2: 미션 끝난 후
+        talkData.Add(1000, new string[] {"꼬끼오. 안녕 로니./0", "날씨가 정말 좋지?/0"});
 
 
-        //WoodyBeaver,비버아저씨   
-        talkData.Add(2000, new string[] {"오, 로니가 왔군!", "무슨 일로 왔나? 내 돌다리를 구경하러 온 건가?"});         
+        //WoodyBeaver,비버아저씨 
+        //3:기본, 4:기본2, 5: 미션 끝난 후  
+        talkData.Add(2000, new string[] {"오, 로니가 왔군!/0", "무슨 일로 왔나? 내 돌다리를 구경하러 온 건가?/0"});         
 
 
         //ParaMeerKat, 모모, 수컷미어캣
-        talkData.Add(3000, new string[] {"안녕 토끼친구!"});
+        //6:기본, 7:입꼬리 다운, 8: 미션 끝난 후
+        talkData.Add(3000, new string[] {"안녕 토끼친구!/0"});
         
 
+        //ParaMeerKat, 캣캣, 암컷미어캣
+        //9:기본, 10:입꼬리 다운운, 11: 미션 끝난 후
+
+
         //BackgroundNpcs
-        talkData.Add(500, new string[] {"로니씨 안녕하세요.", "맛있는 생초 사가세요~"});
-        talkData.Add(600, new string[] {"좋은 하루입니다.", "오늘 채소가 정말 싱싱해요."});   
+        //12
+        talkData.Add(5000, new string[] {"로니씨 안녕하세요./0", "맛있는 생초 사가세요~/0"});
+        talkData.Add(6000, new string[] {"좋은 하루입니다./0", "오늘 채소가 정말 싱싱해요./0"});   
 
 
         //sign
@@ -42,6 +53,28 @@ public class TalkManager : MonoBehaviour
         talkData.Add(400, new string[] {"미어캣 가족의 집", "지하 50개 방, 지상 1개 문", "환영합니다!(단, 뱀은 사절)"});
         talkData.Add(450, new string[] {"이 너머에는 미어캣만 아는 비밀이 있습니다.", "호기심 많은 토끼들은 주의하세요!"});
 
+
+        //초상화(Portrait)
+        //닭 초상화
+        portraitData.Add(1000 + 0, portraitArr[0]); //미션 전1 모습
+        portraitData.Add(1000 + 1, portraitArr[1]); //미션 전2 모습
+        portraitData.Add(1000 + 2, portraitArr[2]); //미션 완료 후 모습
+        //비버 초상화
+        portraitData.Add(2000 + 0, portraitArr[3]); //미션 전1 모습
+        portraitData.Add(2000 + 1, portraitArr[4]); //미션 전2 모습
+        portraitData.Add(2000 + 2, portraitArr[5]); //미션 완료 후 모습
+        //수컷 미어캣 초상화
+        portraitData.Add(3000 + 0, portraitArr[6]); //미션 전1 모습
+        portraitData.Add(3000 + 1, portraitArr[7]); //미션 전2 모습
+        portraitData.Add(3000 + 2, portraitArr[8]); //미션 완료 후 모습
+        //암컷 미어캣 초상화
+        portraitData.Add(4000 + 0, portraitArr[9]); //미션 전1 모습
+        portraitData.Add(4000 + 1, portraitArr[10]); //미션 전2 모습
+        portraitData.Add(4000 + 2, portraitArr[11]); //미션 완료 후 모습
+        //backgroun NPC 초상화
+        portraitData.Add(5000 + 0, portraitArr[12]); //기본
+        portraitData.Add(6000 + 0, portraitArr[12]); //기본
+
     }
 
     public string GetTalk(int id, int talkIndex)
@@ -50,5 +83,11 @@ public class TalkManager : MonoBehaviour
             return null;
         else
             return talkData[id][talkIndex];
+    }
+
+
+    public Sprite GetPortrait(int id, int portraitIndex)
+    {
+        return portraitData[id + portraitIndex];
     }
 }
