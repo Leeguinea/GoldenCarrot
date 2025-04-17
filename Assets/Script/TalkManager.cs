@@ -18,27 +18,20 @@ public class TalkManager : MonoBehaviour
 
     void GenerateData()
     {
-        //QuizChicken,꼬꼬댁아줌마
-        //0:기본, 1:눈 감음, 2: 미션 끝난 후
+        //Talk Data
+        //QuizChicken,닭
         talkData.Add(1000, new string[] {"꼬끼오. 안녕 로니./0", "날씨가 정말 좋지?/0"});
 
 
-        //WoodyBeaver,비버아저씨 
-        //3:기본, 4:기본2, 5: 미션 끝난 후  
+        //WoodyBeaver,비버 
         talkData.Add(2000, new string[] {"오, 로니가 왔군!/0", "무슨 일로 왔나? 내 돌다리를 구경하러 온 건가?/0"});         
 
 
-        //ParaMeerKat, 모모, 수컷미어캣
-        //6:기본, 7:입꼬리 다운, 8: 미션 끝난 후
+        //ParaMeerKat, 수컷미어캣
         talkData.Add(3000, new string[] {"안녕 토끼친구!/0"});
         
 
-        //ParaMeerKat, 캣캣, 암컷미어캣
-        //9:기본, 10:입꼬리 다운운, 11: 미션 끝난 후
-
-
-        //BackgroundNpcs
-        //12
+        //BackgroundNpcs, 상인인
         talkData.Add(5000, new string[] {"로니씨 안녕하세요./0", "맛있는 생초 사가세요~/0"});
         talkData.Add(6000, new string[] {"좋은 하루입니다./0", "오늘 채소가 정말 싱싱해요./0"});   
 
@@ -52,6 +45,25 @@ public class TalkManager : MonoBehaviour
         talkData.Add(350, new string[] {"돌다리도 두들겨보고 건너라.... 아니면", "그냥 건너도 됩니다. 선택은 자유!"});
         talkData.Add(400, new string[] {"미어캣 가족의 집", "지하 50개 방, 지상 1개 문", "환영합니다!(단, 뱀은 사절)"});
         talkData.Add(450, new string[] {"이 너머에는 미어캣만 아는 비밀이 있습니다.", "호기심 많은 토끼들은 주의하세요!"});
+
+
+        //Quest Talk
+        talkData.Add(10 + 1000, new string[] {"로니! 요즘 황금당근을 모으고 있다는 소문이 들리던데, 정말이니?/0",
+                                              "어떻게 알았냐구?/1",
+                                              "이 마을에선 비밀이 오래 가지 않지!/0", 
+                                              "나도 황금당근에 대한 정보가 있어./1", 
+                                              "하지만 먼저 내 특별한 계란들을 찾아와 줘야 해./0", 
+                                              "내 계란들이 어디론가 사라져버렸거든!/1"});
+
+        talkData.Add(11 + 2000, new string[] {"황금당근에 대해 알고 있냐고?/0",
+                                              "아, 그 수다쟁이 닭이 알려줬구나./1",
+                                              "흥미롭군/0",
+                                              "사실 나도 특별한 것들을 모으는 걸 좋아해./1",
+                                              "내 컬렉션에 도움을 준다면, 그 당근에 대한 정보를 알려주지/0"});
+
+        talkData.Add(12 + 2000, new string[] {"내가 찾는건 '신선한 푸른 나무'의 껍질이야. 우리 마을 동쪽 숲에 있지./1",
+                                              "숲에서 나무 껍질 세 개만 가져와주렴. 물론 나무가 아닌 바닥에서 줍는건 잊지말게나./0",
+                                              "우리 모두 자연을 사랑하니깐!/0"});
 
 
         //초상화(Portrait)
@@ -68,9 +80,9 @@ public class TalkManager : MonoBehaviour
         portraitData.Add(3000 + 1, portraitArr[7]); //미션 전2 모습
         portraitData.Add(3000 + 2, portraitArr[8]); //미션 완료 후 모습
         //암컷 미어캣 초상화
-        portraitData.Add(4000 + 0, portraitArr[9]); //미션 전1 모습
-        portraitData.Add(4000 + 1, portraitArr[10]); //미션 전2 모습
-        portraitData.Add(4000 + 2, portraitArr[11]); //미션 완료 후 모습
+        //portraitData.Add(4000 + 0, portraitArr[9]); //미션 전1 모습
+        //portraitData.Add(4000 + 1, portraitArr[10]); //미션 전2 모습
+        //portraitData.Add(4000 + 2, portraitArr[11]); //미션 완료 후 모습
         //backgroun NPC 초상화
         portraitData.Add(5000 + 0, portraitArr[12]); //기본
         portraitData.Add(6000 + 0, portraitArr[12]); //기본

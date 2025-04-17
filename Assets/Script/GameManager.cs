@@ -8,6 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public TalkManager talkManager;
+    public QuestManager questManager;
     public GameObject talkPanel;
     public Image portraitImg;
     public TextMeshProUGUI talkText;
@@ -18,25 +19,32 @@ public class GameManager : MonoBehaviour
     //2
     public void Action(GameObject scanObj)
     {
-
+        //Get Current Object
         scanObject = scanObj;
         ObjData objData  = scanObject.GetComponent<ObjData>();
         Talk(objData.id, objData.isNpc);
+        
+        //Visible Talk For Action
         talkPanel.SetActive(isAction);
         
     }
 
     void Talk(int id, bool isNpc)
     {
-        string talkData = talkManager.GetTalk(id, talkIndex);
-
+        //Set Talk Data
+        int questTalkIndex = questManager.GetQuestTalkIndex(id);
+        string talkData = talkManager.GetTalk(id + questTalkIndex, talkIndex);
+        
+        //End Talk
         if(talkData == null)
         {
             isAction = false;
             talkIndex = 0;
+            Debug.Log(questManager.CheckQuest(id));
             return;
         }
 
+        //Continue Talk
         if(isNpc)
         {
             talkText.text = talkData.Split('/')[0];
