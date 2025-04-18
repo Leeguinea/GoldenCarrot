@@ -22,8 +22,20 @@ public class GameManager : MonoBehaviour
         //Get Current Object
         scanObject = scanObj;
         ObjData objData  = scanObject.GetComponent<ObjData>();
-        Talk(objData.id, objData.isNpc);
         
+         // 계란(5000)인 경우 Talk() 호출 없이 바로 처리
+        if (objData.id == 5000)
+        {
+            QuestManager qm = FindAnyObjectByType<QuestManager>();
+            qm.hasEgg = true;
+            scanObj.SetActive(false);
+            Debug.Log("계란을 획득했습니다!");
+        }
+        else // NPC인 경우에만 Talk() 호출
+        {
+            Talk(objData.id, objData.isNpc);
+        }
+
         //Visible Talk For Action
         talkPanel.SetActive(isAction);
         
